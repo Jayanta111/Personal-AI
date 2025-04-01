@@ -9,6 +9,5 @@ export default defineConfig({
     tailwindcss(),
     
   ],
-  base: 'https://jayanta111.github.io/Personal-AI/', // Replace with your repository name
-
+  
 });
