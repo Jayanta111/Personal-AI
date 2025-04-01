@@ -129,7 +129,7 @@ function App() {
                     className="border-2 border-indigo-600 w-full md:w-[800px] h-[100px]"
                     value={inputText}
                     onChange={handleInputChange}
-                    placeholder="Ask Me I am Your AI"
+                    placeholder="Ask Me I am Your AI Teacher"
                 />
                 <br />
                 <button className="button bg-blue-800 text-sky-400" onClick={handleRun} disabled={loading}>
@@ -141,8 +141,19 @@ function App() {
                         <div className="container overflow-auto mx-auto items-center justify-center p-4 border rounded">
                             <ReactMarkdown>{resultText}</ReactMarkdown>
                         </div>
+                    
                     </div>
                 )}
+                    <p>
+                    Developed by Jayanta Chungkrang
+                    <a href="https://github.com/Jayanta111" target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 hover:underline">
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/jayanta-chungkrang-a94818193" target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 hover:underline">
+                        LinkedIn
+                    </a>
+                    {/* Add other social media links as needed */}
+                </p>
             </div>
         </div>
     );
