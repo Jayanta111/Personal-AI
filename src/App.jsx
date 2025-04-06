@@ -3,6 +3,9 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import './App.css';
 import AIPImage from './assets/artificial-intelligence.png';
 import ReactMarkdown from 'react-markdown';
+import { Sparkles, BookOpen, Bot } from "lucide-react";
+
+
 
 function App() {
     const [inputText, setInputText] = useState('');
@@ -50,7 +53,7 @@ function App() {
 
         setLoading(true);
         try {
-            const promptWithRole = `You are an ${role} ${teachingStyle} teaching to a ${selectedSemester}. ${inputText} . Format the result with markdown.`;
+            const promptWithRole = `You are an ${role} ${teachingStyle} teaching to a ${selectedSemester}. ${inputText} . Format the result with markdown. `;
             const chatSession = model.startChat({
                 generationConfig: {
                     temperature: 1,
@@ -81,15 +84,19 @@ function App() {
     };
 
     return (
-        <div className="fixed top-0 left-0 w-full h-full overflow-y-auto p-4">
-            <div className="container mx-auto flex flex-col items-center justify-start min-h-screen">
-                <section className="flex items-center justify-center pt-8" >
-                    <h1 className="text-gray-950 dark:text-white text-xl body-font">Personal AI Teacher</h1>
+        <div className="  min-h-screen bg-gradient-to-br  from-sky-50 to-indigo-100 p-6 sm:[40rem] md:[48rem] lg:[64rem] xl:[80rem] 2xl:[96rem]">
+            <div className="container  w-full mx-auto flex flex-col items-center justify-start min-h-screen">
+                <section className="text-center py-12" >
+                    <h1 className="text-4xl font-bold text-indigo-800 mb-4">Personal AI Teacher</h1>
+                    <p className="text-lg text-gray-600 mb-6">       
+                           Learn smarter, faster, and more efficiently with your intelligent tutor.
+                    </p>
+
                 </section>
                 <img className="lg:w-1/7 md:w-3/6 w-2/3 mb-10 object-cover object-center rounded" alt="AI" src={AIPImage} />
 
                 <div className="mb-4">
-                    <label htmlFor="roleSelect" className="block text-xl font-medium text-gray-950 dark:text-white ">Choose Your Semester:</label>
+                    <label htmlFor="roleSelect" className="block text-xl font-medium text-gray-800 ">Choose Your Semester:</label>
                     <select
                         id="roleSelect"
                         className="mt-1 block w-full rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -109,10 +116,10 @@ function App() {
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="predefinedPrompts" className="block text-xl font-medium text-gray-950 dark:text-white ">Choose a Prompt:</label>
+                    <label htmlFor="predefinedPrompts" className="block text-xl font-medium text-gray-800 ">Choose a Prompt:</label>
                     <select
                         id="predefinedPrompts"
-                        className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full text-gray-800 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         value={selectedPrompt}
                         onChange={(e) => handlePromptSelect(e.target.value)}
                     >
@@ -126,25 +133,63 @@ function App() {
                 </div>
 
                 <textarea
-                    className="border-2 border-indigo-600 w-full md:w-[800px] h-[100px]"
+                    className="border-2 text-gray-700  border-indigo-600 w-full md:w-[800px] h-[100px]"
                     value={inputText}
                     onChange={handleInputChange}
                     placeholder="Ask Me I am Your AI Teacher"
                 />
                 <br />
-                <button className="button bg-blue-800 text-sky-400" onClick={handleRun} disabled={loading}>
+                <button className="button bg-blue-800 text-sky-700" onClick={handleRun} disabled={loading}>
                     {loading ? 'Loading...' : 'ASK'}
                 </button>
                 {resultText && (
                     <div className="mt-5 w-full md:w-[800px]">
-                        <h2 className="text-xl text-left bottom-1">Result:</h2>
-                        <div className="container overflow-auto mx-auto items-center justify-center p-4 border rounded">
+                        <h2 className="text-xl text-gray-800 text-left bottom-1">Result:</h2>
+                        <div className="container overflow-auto mx-auto items-center justify-center p-4 border rounded text-gray-800">
                             <ReactMarkdown>{resultText}</ReactMarkdown>
                         </div>
                     
                     </div>
                 )}
-                    <p>
+
+            </div>
+            <section className="grid md:grid-cols-4 gap-6 py-10">
+            <div className="rounded-2xl shadow-md bg-white p-6">
+        <Sparkles className="h-10 w-10 text-indigo-600 mb-4" />
+        <h2 className="text-xl font-semibold mb-2  text-gray-800">BTECH CSE </h2>
+        <p className="text-gray-600 ">
+ This AI tool is designed to assist BTECH CSE students in their studies, providing personalized support and resources to enhance their learning experience.
+        </p>
+      </div>
+      {/* Card 1 */}
+      <div className="rounded-2xl shadow-md bg-white p-6">
+        <Sparkles className="h-10 w-10 text-indigo-600 mb-4" />
+        <h2 className="text-xl font-semibold mb-2  text-gray-800">Instant Answers</h2>
+        <p className="text-gray-600 ">
+          Get clear explanations to your questions in seconds — 24/7.
+        </p>
+      </div>
+
+      {/* Card 2 */}
+      <div className="rounded-2xl shadow-md bg-white p-6">
+        <BookOpen className="h-10 w-10 text-indigo-600 mb-4" />
+        <h2 className="text-xl font-semibold mb-2  text-gray-800">Interactive Lessons</h2>
+        <p className="text-gray-600">
+          Personalized content tailored to your learning style and speed.
+        </p>
+      </div>
+
+      {/* Card 3 */}
+      <div className="rounded-2xl shadow-md bg-white p-6">
+        <Bot className="h-10 w-10 text-indigo-600 mb-4" />
+        <h2 className="text-xl font-semibold mb-2  text-gray-800">AI Chat Assistant</h2>
+        <p className="text-gray-600">
+          Chat with your AI tutor just like talking to a real teacher.
+        </p>
+      </div>
+    </section>
+            <footer className="ext-center text-sm text-gray-500 mt-16">
+                    <p className="mt-5 text-gray-600 text-sm">
                     Developed by Jayanta Chungkrang
                     <a href="https://github.com/Jayanta111" target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 hover:underline">
                         GitHub
@@ -152,9 +197,9 @@ function App() {
                     <a href="https://www.linkedin.com/in/jayanta-chungkrang-a94818193" target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 hover:underline">
                         LinkedIn
                     </a>
-                    {/* Add other social media links as needed */}
+               { }
                 </p>
-            </div>
+                </footer>
         </div>
     );
 }
