@@ -34,7 +34,9 @@ function App() {
                     return;
                 }
                 const genAI = new GoogleGenerativeAI(apiKey);
-                const newModel = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const newModel = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash-8b"
+});
                 setModel(newModel);
             } catch (error) {
                 console.error('Error initializing model:', error);
